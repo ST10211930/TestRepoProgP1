@@ -44,6 +44,7 @@ namespace TestProgPoePart1
                         break;
                     default:
                         Console.WriteLine("Invalid choice. Please enter a number from 1 to 6.");
+                        GoBackToMenu();
                         break;
                 }
             }
@@ -60,6 +61,30 @@ namespace TestProgPoePart1
             Console.WriteLine("6: Exit Program");
         }
 
+        static int ReadInt(string prompt)
+        {
+            int number;
+            while (true)
+            {
+                Console.Write(prompt);
+                if (int.TryParse(Console.ReadLine(), out number))
+                    return number;
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+            }
+        }
+
+        static double ReadDouble(string prompt)
+        {
+            double number;
+            while (true)
+            {
+                Console.Write(prompt);
+                if (double.TryParse(Console.ReadLine(), out number))
+                    return number;
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+            }
+        }
+
         static void EnterRecipeDetails(Recipe recipe)
         {
             Console.Clear();
@@ -67,32 +92,37 @@ namespace TestProgPoePart1
             string name = Console.ReadLine();
             recipe.SetRecipeName(name);
 
-            Console.Write("Enter the number of ingredients: ");
-            int ingredientCount = int.Parse(Console.ReadLine());
+            int ingredientCount = ReadInt("Enter the number of ingredients: ");
+            string[] units = { "kg", "g", "mg", "L", "mL", "tablespoon", "teaspoon" };
 
             for (int i = 0; i < ingredientCount; i++)
             {
                 Console.WriteLine($"\nIngredient {i + 1}:");
                 Console.Write("Name: ");
                 string ingredientName = Console.ReadLine();
-                Console.Write("Quantity: ");
-                double quantity = double.Parse(Console.ReadLine());
-                Console.WriteLine("choose from the list of Unit of Measurements below and type it in: \n" +
-                 " kg\n" +
-                 " g\n" +
-                 " mg\n" +
-                 " L\n" +
-                 " mL\n" +
-                 " tablespoon\n" +
-                 " teaspoon");
-                string unit = Console.ReadLine();
+                double quantity = ReadDouble("Quantity: ");
+                Console.WriteLine("Choose from the list of Unit of Measurements below:");
+                for (int j = 0; j < units.Length; j++)
+                {
+                    Console.WriteLine($"{j + 1}. {units[j]}");
+                }
+
+                //validation
+                int unitChoice = -1;
+                while (unitChoice < 0 || unitChoice >= units.Length)
+                {
+                    unitChoice = ReadInt("Enter your choice: ") - 1;
+                    if (unitChoice < 0 || unitChoice >= units.Length)
+                    {
+                        Console.WriteLine("Invalid choice, please select a valid unit from the list.");
+                    }
+                }
+                string unit = units[unitChoice];
 
                 recipe.AddIngredient(ingredientName, quantity, unit);
             }
 
-            Console.Write("\nEnter the number of steps: ");
-            int stepCount = int.Parse(Console.ReadLine());
-
+            int stepCount = ReadInt("\nEnter the number of steps: ");
             for (int i = 0; i < stepCount; i++)
             {
                 Console.Write($"Step {i + 1}: ");
@@ -104,13 +134,21 @@ namespace TestProgPoePart1
             GoBackToMenu();
         }
 
-        static void ScaleRecipe(Recipe recipe)  //item unit scaling logic
+        static void ScaleRecipe(Recipe recipe)
         {
             Console.Clear();
-            Console.Write("Enter the scaling factor (0.5 for half, 2 for double, 3 for triple): ");
-            double factor = double.Parse(Console.ReadLine());
+            double factor = 0;
+            while (factor != 0.5 && factor != 2 && factor != 3)
+            {
+                factor = ReadDouble("Enter the scaling factor (0.5 for half, 2 for double, 3 for triple): ");
+                if (factor != 0.5 && factor != 2 && factor != 3)
+                {
+                    Console.WriteLine("Invalid scaling factor. Please enter 0.5, 2, or 3.");
+                }
+            }
             recipe.ScaleRecipe(factor);
             Console.WriteLine("\nRecipe scaled successfully!");
+            recipe.DisplayRecipe();
             GoBackToMenu();
         }
 

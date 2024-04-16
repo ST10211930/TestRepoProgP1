@@ -11,6 +11,7 @@ namespace TestProgPoePart1
         //proprties name, quantity, unit
         public string Name { get; set; }
         public double Quantity { get; set; }
+        public double OriginalQuantity { get; set; }
         public string Unit {  get; set; }
     }
 }

@@ -14,7 +14,7 @@ namespace TestProgPoePart1
 
         public void AddIngredient(string name, double quantity, string unit)
         {
-            ingredients.Add(new Ingredients { Name = name, Quantity = quantity, Unit = unit });
+            ingredients.Add(new Ingredients { Name = name, Quantity = quantity, OriginalQuantity = quantity, Unit = unit });
         }
 
         public void AddStep(string step)
@@ -52,15 +52,19 @@ namespace TestProgPoePart1
         public void ResetScaling()
         {
             Console.Clear();
-            // Implement logic to reset quantities to original values
+            foreach (var ingredient in ingredients)
+            {
+                ingredient.Quantity = ingredient.OriginalQuantity; // Reset to original quantity
+            }
+            Console.WriteLine("Scaling has been reset!");
         }
 
         public void ClearRecipe()
         {
-            Console.Clear();
             ingredients.Clear();
             steps.Clear();
             recipeName = null;
+            Console.WriteLine("Data Cleared Successfully!");
         }
 
         public void SetRecipeName(string name)
