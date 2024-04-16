@@ -1,0 +1,7 @@
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\bin\Debug\TestProgPoePart1.exe.config
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\bin\Debug\TestProgPoePart1.exe
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\bin\Debug\TestProgPoePart1.pdb
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\obj\Debug\TestProgPoePart1.csproj.AssemblyReference.cache
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\obj\Debug\TestProgPoePart1.csproj.CoreCompileInputs.cache
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\obj\Debug\TestProgPoePart1.exe
+C:\Users\caleb\OneDrive\Desktop\Test Repo for PROGP1\TestRepoProgP1\TestProgPoePart1\TestProgPoePart1\obj\Debug\TestProgPoePart1.pdb
